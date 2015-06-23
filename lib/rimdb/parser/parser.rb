@@ -5,7 +5,8 @@ module Rimdb
       @movies ||= @document.css(movies_selector).map do |movie_el|
         Movie.new({
           title: self.title(movie_el),
-          year: self.year(movie_el)
+          year: self.year(movie_el),
+          rating: self.rating(movie_el)
         })
       end
     end

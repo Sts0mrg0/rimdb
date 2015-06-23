@@ -15,9 +15,18 @@ describe 'Ratings' do
   end
 
   it 'should respond to movies()' do
-    parser = Rimdb::Ratings.new(123)
-    expect(parser.movies).to be_an_instance_of Array
-    expect(parser.movies.first).to respond_to :title
+    ratings = Rimdb::Ratings.new(123)
+    expect(ratings.movies).to be_an_instance_of Array
+    expect(ratings.movies.first).to respond_to :title
+    expect(ratings.movies.first).to respond_to :rating
+  end
+
+  it 'should display the correct information' do
+    ratings = Rimdb::Ratings.new(123)
+    first = ratings.movies.first
+    expect(first.title).to eq 'Untouchable'
+    expect(first.year).to eq '2011'
+    expect(first.rating).to eq '10'
   end
 
 end

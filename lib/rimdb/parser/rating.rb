@@ -13,7 +13,11 @@ module Rimdb
         end
 
         def year(movie_el)
-          movie_el.css('.year_type').first.text
+          movie_el.css('.year_type').first.text.gsub(/\(|\)/, '')
+        end
+
+        def rating(movie_el)
+          movie_el.css('.rating-your .value').text
         end
 
     end
