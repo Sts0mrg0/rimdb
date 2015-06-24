@@ -4,15 +4,16 @@ module Rimdb
     def movies
       @movies ||= @document.css(movies_selector).map do |movie_el|
         Movie.new({
-          title: self.title(movie_el),
-          year: self.year(movie_el),
-          rating: self.rating(movie_el)
+          title: title(movie_el),
+          year: year(movie_el),
+          rating: rating(movie_el),
+          blurb: blurb(movie_el)
         })
       end
     end
 
     def each_movie
-      @movies.each { |movie| yield movie }
+      movies.to_enum
     end
 
   end

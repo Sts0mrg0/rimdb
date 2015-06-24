@@ -20,6 +20,10 @@ module Rimdb
           movie_el.css('.rating-your .value').text
         end
 
+        def blurb(movie_el)
+          movie_el.css('.info .item_description').text
+        end
+
     end
   end
 end

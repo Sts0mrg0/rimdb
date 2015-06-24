@@ -5,15 +5,11 @@ module Rimdb
 
     def self.fetch(url)
       res = open(url)
-      status_code = res.status.first
-
-      if status_code == '404'
-        raise DocumentNotFoundError.new('The document could not be found')
-      elsif status_code != '200'
-        raise DocumentError.new("Request received status code #{status_code}")
-      end
-
       Nokogiri::HTML(res.read)
+    rescue OpenURI::HTTPError => e
+      raise DocumentFetchError.new "Failed to connect. Status: #{e.message}"
+    rescue StandardError => e
+      raise DocumentFetchError.new "Fatal error connecting to #{url}: #{e.message}"
     end
 
     def self.to_file(path)
@@ -25,6 +21,5 @@ module Rimdb
 
   end
 
-  class DocumentError < StandardError; end;
-  class DocumentNotFoundError < DocumentError; end;
+  class DocumentFetchError < StandardError; end;
 end
