@@ -24,6 +24,11 @@ module Rimdb
           movie_el.css('.info .item_description').text
         end
 
+        def cover(movie_el)
+          src = movie_el.css('.hover-over-image img').attribute('src').value
+          src.gsub(/^http:\/\/.*\/bmi\/+/, 'http://')
+        end
+
     end
   end
 end

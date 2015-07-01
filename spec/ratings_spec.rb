@@ -27,4 +27,10 @@ describe 'Ratings' do
     expect(first.blurb).to include 'quadriplegic'
   end
 
+  it 'should return the correct cover URL' do
+    ratings = Rimdb::Ratings.new(123)
+    first = ratings.movies.first
+    expect(first.cover).to start_with 'http://ia.media-imdb.com'
+  end
+
 end

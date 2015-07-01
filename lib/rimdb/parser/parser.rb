@@ -7,7 +7,8 @@ module Rimdb
           title: title(movie_el),
           year: year(movie_el),
           rating: rating(movie_el),
-          blurb: blurb(movie_el)
+          blurb: blurb(movie_el),
+          cover: cover(movie_el)
         })
       end
     end
