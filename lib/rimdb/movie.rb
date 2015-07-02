@@ -13,5 +13,10 @@ module Rimdb
       @cover  = details.fetch(:cover, DEFAULT)
     end
 
+    def is_movie?
+      match = @blurb.match(/\((.*) mins.\)/)
+      return true unless match.nil? or match[1].to_i <= 60
+    end
+
   end
 end

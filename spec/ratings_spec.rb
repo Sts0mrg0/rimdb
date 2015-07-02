@@ -33,4 +33,10 @@ describe 'Ratings' do
     expect(first.cover).to start_with 'http://ia.media-imdb.com'
   end
 
+  it 'should return whether it is a movie' do
+    ratings = Rimdb::Ratings.new(123)
+    first = ratings.movies.first
+    expect(first.is_movie?).to be true
+  end
+
 end
