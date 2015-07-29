@@ -1,5 +1,6 @@
 module Rimdb
   module Parser
+    include Enumerable
 
     def movies
       @movies ||= @document.css(movies_selector).map do |movie_el|
@@ -13,12 +14,8 @@ module Rimdb
       end
     end
 
-    def all
-      movies
-    end
-
-    def each_movie
-      movies.to_enum
+    def each(&block)
+      movies.each(&block)
     end
 
   end

@@ -18,5 +18,9 @@ module Rimdb
       return true unless match.nil? or match[1].to_i <= 60
     end
 
+    def <=>(other)
+      title <=> other.title
+    end
+
   end
 end
