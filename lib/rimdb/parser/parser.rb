@@ -13,6 +13,10 @@ module Rimdb
       end
     end
 
+    def all
+      movies
+    end
+
     def each_movie
       movies.to_enum
     end

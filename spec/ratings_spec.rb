@@ -18,6 +18,11 @@ describe 'Ratings' do
     expect(ratings.each_movie).to be_an_instance_of Enumerator
   end
 
+  it 'should return `all` as an array' do
+    ratings = Rimdb::Ratings.new(123)
+    expect(ratings.all).to be_an_instance_of Array
+  end
+
   it 'should display the correct information' do
     ratings = Rimdb::Ratings.new(123)
     first = ratings.movies.first
