@@ -36,4 +36,8 @@ describe 'Movie value object' do
     expect(movie.to_h[:year]).to eq '2001'
   end
 
+  it 'should covert to a string' do
+    expect(movie.to_s).to include 'Foo'
+  end
+
 end

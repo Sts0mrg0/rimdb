@@ -22,6 +22,10 @@ module Rimdb
       title <=> other.title
     end
 
+    def to_s
+      "Movie<#{object_id}> #{title}"
+    end
+
     def to_h
       instance_variables.reduce({}) do |acc, var|
         key = var.to_s.delete '@'
