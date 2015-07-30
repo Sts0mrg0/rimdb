@@ -22,5 +22,12 @@ module Rimdb
       title <=> other.title
     end
 
+    def to_h
+      instance_variables.reduce({}) do |acc, var|
+        key = var.to_s.delete '@'
+        acc.merge({ key.to_sym => instance_variable_get(var) })
+      end
+    end
+
   end
 end
