@@ -8,7 +8,7 @@ module Rimdb
     def initialize(details)
       @title  = details[:title]
       @year   = details.fetch(:year, DEFAULT)
-      @rating = details.fetch(:rating, DEFAULT)
+      @rating = details.fetch(:rating, DEFAULT).to_i
       @blurb  = details.fetch(:blurb, DEFAULT)
       @cover  = details.fetch(:cover, DEFAULT)
     end

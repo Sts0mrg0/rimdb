@@ -29,7 +29,7 @@ describe 'Ratings' do
     first = ratings.movies.first
     expect(first.title).to eq 'Untouchable'
     expect(first.year).to eq '2011'
-    expect(first.rating).to eq '10'
+    expect(first.rating).to eq 10
     expect(first.blurb).to include 'quadriplegic'
   end
 
