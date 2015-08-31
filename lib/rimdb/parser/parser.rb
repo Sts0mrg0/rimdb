@@ -3,7 +3,7 @@ module Rimdb
     include Enumerable
 
     def movies
-      @movies ||= @document.css(movies_selector).map do |movie_el|
+      @movies ||= html.css(movies_selector).map do |movie_el|
         Movie.new({
           title: title(movie_el),
           year: year(movie_el),
