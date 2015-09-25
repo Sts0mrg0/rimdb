@@ -13,4 +13,14 @@ describe 'Document Base' do
     expect(document.method(:url)).to be_a Method
   end
 
+  describe 'empty?' do
+    it 'returns false for nil' do
+      base = Rimdb::Document::Base.new(123)
+      expect(base).to receive(:url).and_return 'http://foo.com'
+      expect(base).to receive(:fetch).and_return 'foobar'
+      base.get
+      expect(base.html).to eq 'foobar'
+    end
+  end
+
 end

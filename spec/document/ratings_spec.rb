@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'Ratings Document', focus: true do
   before :each do
-    page_1 = /.*\/ratings.*page=1.*/
-    page_2 = /.*\/ratings.*page=2.*/
+    page_1 = /.*\/ratings.*start=1.*/
+    page_2 = /.*\/ratings.*start=300.*/
 
     stub_request(:get, page_1)
       .to_return(body: Utils.load_fixture('ratings_page.html'))
@@ -14,7 +14,7 @@ describe 'Ratings Document', focus: true do
   let(:document) { Rimdb::Document::Rating.new(123) }
 
   it 'returns the correct url' do
-    expected_url = /.*\/user\/123\/ratings\?sort=list_order,asc&page=1/
+    expected_url = /.*\/user\/123\/ratings\?sort=ratings_date:desc&start=1/
     expect(document.url(1).to_s).to match expected_url
   end
 
@@ -24,7 +24,7 @@ describe 'Ratings Document', focus: true do
 
   describe 'empty' do
     it 'returns true when displaying no result' do
-      document.get(2)
+      document.get(300)
       expect(document.empty?).to equal true
     end
 

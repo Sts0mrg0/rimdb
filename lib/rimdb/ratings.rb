@@ -18,7 +18,7 @@ module Rimdb
       until @document.empty?
         @document.get(page)
         @movies.concat @document.movies
-        page = page + 1
+        page = page + 100
       end
 
       self

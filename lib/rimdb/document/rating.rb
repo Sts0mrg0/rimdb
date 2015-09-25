@@ -9,7 +9,7 @@ module Rimdb
         url_parts = {
           host: 'www.imdb.com',
           path: "/user/#@user_id/ratings",
-          query: "sort=list_order,asc&page=#{page}"
+          query: "sort=ratings_date:desc&start=#{page}"
         }
         URI::HTTP.build(url_parts)
       end

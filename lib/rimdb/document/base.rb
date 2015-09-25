@@ -11,19 +11,20 @@ module Rimdb
       end
 
       def get(page = 1)
-        @html = fetch url(page)
+        @html = fetch(url(page))
       end
 
       def empty?
-        @html.respond_to? :css and !!(@html.css('.lister-item:first').text =~ /No results/)
+        @html.respond_to? :css and
+          @html.css('.list.detail').children.select(&:element?).empty?
       end
 
       protected
         def url(page = 1); end;
 
       private
-        def fetch(page)
-          res = open(url(page))
+        def fetch(url)
+          res = open(url)
           Nokogiri::HTML(res.read)
         rescue OpenURI::HTTPError => e
           raise DocumentFetchError.new "Failed to connect. Status: #{e.message}"

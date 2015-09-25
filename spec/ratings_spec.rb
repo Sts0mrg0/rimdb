@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'Ratings' do
 
   before :each do
-    page_1 = /.*\/ratings.*page=1.*/
-    page_2 = /.*\/ratings.*page=2.*/
+    page_1 = /.*\/ratings.*start=1.*/
+    page_2 = /.*\/ratings.*start=2.*/
 
     stub_request(:get, page_1)
       .to_return(body: Utils.load_fixture('ratings_page.html'))
@@ -26,6 +26,12 @@ describe 'Ratings' do
     ratings.fetch
     expect(ratings.movies).to be_an_instance_of Array
     expect(ratings.movies.length).not_to be 0
+  end
+
+  it 'return itself for chaining' do
+    ratings = Rimdb::Ratings.new(123)
+    expect(ratings.fetch).to be_an_instance_of Rimdb::Ratings
+    expect(ratings.fetch).to respond_to :each
   end
 
   it 'is a ratings of movies' do
