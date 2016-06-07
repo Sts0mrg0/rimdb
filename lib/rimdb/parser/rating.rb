@@ -29,6 +29,10 @@ module Rimdb
           src.gsub(/^http:\/\/.*\/bmi\/+/, 'http://')
         end
 
+        def href(movie_el)
+          movie_el.css('.image a').attribute('href').value
+        end
+
     end
   end
 end

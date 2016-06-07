@@ -19,6 +19,8 @@ describe 'Movie value object' do
     expect(movie).to respond_to :year
     expect(movie).to respond_to :rating
     expect(movie).to respond_to :blurb
+    expect(movie).to respond_to :cover
+    expect(movie).to respond_to :href
   end
 
   it 'initializes with a year' do

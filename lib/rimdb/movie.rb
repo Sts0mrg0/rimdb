@@ -3,7 +3,7 @@ module Rimdb
 
     DEFAULT = 'Unknown'
 
-    attr_reader :title, :year, :blurb, :cover
+    attr_reader :title, :year, :blurb, :cover, :href
 
     def initialize(details)
       @title  = details[:title]
@@ -11,6 +11,7 @@ module Rimdb
       @rating = details[:rating] || 0
       @blurb  = details.fetch(:blurb, DEFAULT)
       @cover  = details.fetch(:cover, DEFAULT)
+      @href   = details[:href]
     end
 
     def is_movie?

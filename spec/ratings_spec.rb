@@ -65,4 +65,11 @@ describe 'Ratings' do
     expect(first.is_movie?).to be true
   end
 
+  it 'returns the correct href' do
+    ratings = Rimdb::Ratings.new(123)
+    ratings.fetch
+    first = ratings.movies.first
+    expect(first.href).to eq '/title/tt1675434/'
+  end
+
 end
